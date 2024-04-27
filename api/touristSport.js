@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const client = require("../mongoDB/mongoDB");
-
-router.get("/", (req, res) => {
-  res.send("Tourist Sport api");
-  console.log("Tourist Sport api");
-});
+const database = client.db("travelAgencyDB");
+const touristSports = database.collection("touristSports");
 
 async function run() {
   try {
@@ -14,6 +11,9 @@ async function run() {
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!",
     );
+    router.get("/", (req, res) => {
+      res.send("Tourist Sport api");
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

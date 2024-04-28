@@ -27,6 +27,30 @@ async function run() {
       const result = await touristSports.insertOne(touristSport);
       res.json(result);
     });
+    router.put("/:id", async (req, res) => {
+      const toursitSportID = req.params.id;
+      const newData = req.body;
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          tourists_spot_name: newData.tourists_spot_name,
+          country_Name: newData.country_Name,
+          location: newData.location,
+          short_description: newData.short_description,
+          travel_time: newData.travel_time,
+          totalVisitorsPerYear: newData.totalVisitorsPerYear,
+          average_cost: newData.average_cost,
+          seasonality: newData.seasonality,
+          image_URL: newData.image_URL,
+        },
+      };
+      const result = await touristSports.updateOne(
+        { _id: new ObjectId(toursitSportID) },
+        updateDoc,
+        options,
+      );
+      res.json(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

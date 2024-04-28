@@ -14,6 +14,11 @@ async function run() {
     router.get("/", (req, res) => {
       res.send("Tourist Sport api");
     });
+    router.post("/", async (req, res) => {
+      const touristSport = req.body;
+      const result = await touristSports.insertOne(touristSport);
+      res.json(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

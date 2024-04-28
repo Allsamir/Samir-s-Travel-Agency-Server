@@ -11,8 +11,11 @@ async function run() {
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!",
     );
-    router.get("/", (req, res) => {
-      res.send("My Tourist Sport api");
+    router.get("/:userEmail", async (req, res) => {
+      const userEmail = req.params.userEmail;
+      const query = { email: userEmail };
+      const user = await touristSportBasedOnUser.findOne(query);
+      res.json(user.touristSports);
     });
     router.post("/", async (req, res) => {
       const user = req.body;

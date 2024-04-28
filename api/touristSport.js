@@ -12,6 +12,11 @@ async function run() {
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!",
     );
+    router.get("/limitedSports", async (req, res) => {
+      const cursor = touristSports.find().limit(6);
+      const sixTouristSport = await cursor.toArray();
+      res.json(sixTouristSport);
+    });
     router.get("/", async (req, res) => {
       const cursor = touristSports.find({});
       const allTouristSports = await cursor.toArray();

@@ -66,6 +66,22 @@ async function run() {
       const result = await touristSportBasedOnUser.updateOne(filter, update);
       res.json(result);
     });
+
+    router.delete("/:id", async (req, res) => {
+      const id = req.params.id;
+      const user = req.body;
+      const filter = {
+        email: user.email,
+        "touristSports._id": id,
+      };
+      const updateDoc = {
+        $pull: {
+          touristSports: { _id: id },
+        },
+      };
+      const result = await touristSportBasedOnUser.updateOne(filter, updateDoc);
+      res.json(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

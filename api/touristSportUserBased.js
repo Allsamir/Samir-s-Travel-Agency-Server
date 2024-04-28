@@ -42,6 +42,30 @@ async function run() {
       );
       res.json(result);
     });
+    router.patch("/:id", async (req, res) => {
+      const id = req.params.id;
+      const user = req.body;
+      const filter = {
+        email: user.email,
+        "touristSports._id": id,
+      };
+      const update = {
+        $set: {
+          "touristSports.$.tourists_spot_name": user.data.tourists_spot_name,
+          "touristSports.$.country_Name": user.data.country_Name,
+          "touristSports.$.location": user.data.location,
+          "touristSports.$.short_description": user.data.short_description,
+          "touristSports.$.travel_time": user.data.travel_time,
+          "touristSports.$.totalVisitorsPerYear":
+            user.data.totalVisitorsPerYear,
+          "touristSports.$.average_cost": user.data.average_cost,
+          "touristSports.$.seasonality": user.data.seasonality,
+          "touristSports.$.image_URL": user.data.image_URL,
+        },
+      };
+      const result = await touristSportBasedOnUser.updateOne(filter, update);
+      res.json(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

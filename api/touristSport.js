@@ -51,6 +51,11 @@ async function run() {
       );
       res.json(result);
     });
+    router.delete("/:id", async (req, res) => {
+      const id = req.params.id;
+      const result = await touristSports.deleteOne({ _id: new ObjectId(id) });
+      res.json(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
   }

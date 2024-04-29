@@ -17,6 +17,11 @@ async function run() {
       const sixTouristSport = await cursor.toArray();
       res.json(sixTouristSport);
     });
+    router.get("/ascendingOrder", async (req, res) => {
+      const cursor = touristSports.find().sort({ average_cost: 1 });
+      const inAscendingOrder = await cursor.toArray();
+      res.json(inAscendingOrder);
+    });
     router.get("/", async (req, res) => {
       const cursor = touristSports.find({});
       const allTouristSports = await cursor.toArray();

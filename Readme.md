@@ -15,3 +15,7 @@ Welcome to Samir's Travel Agency, your ultimate destination for exploring the wo
 ## Category
 
 - **Southeast Asia**
+
+## For Challenge I used
+
+-**React Tooltip** [https://react-tooltip.com/] -**React Simple Typewriter** [https://www.npmjs.com/package/react-simple-typewriter]

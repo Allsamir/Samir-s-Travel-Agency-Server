@@ -12,6 +12,10 @@ app.use("/tourist-sports", touristSports);
 app.use("/my-tourist-sports", touristSportBasedOnUser);
 app.use("/countries", countries);
 
+app.get("/", (req, res) => {
+  res.send("Hello Server!");
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });

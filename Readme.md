@@ -2,7 +2,7 @@
 
 Welcome to Samir's Travel Agency, your ultimate destination for exploring the wonders of Southeast Asia!
 
-**Live Site URL:** [www.samirstravelagency.com/demo](#)
+**Live Site URL:** [https://samir-s-travel-agency.web.app/](#)
 
 ## Features
 

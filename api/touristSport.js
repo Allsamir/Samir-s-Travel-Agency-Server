@@ -27,6 +27,14 @@ async function run() {
       const result = await touristSports.findOne({ _id: new ObjectId(id) });
       res.json(result);
     });
+    router.get("/country/:countryName", async (req, res) => {
+      const countryName = req.params.countryName;
+      const cursor = touristSports.find({
+        country_Name: countryName,
+      });
+      const result = await cursor.toArray();
+      res.json(result);
+    });
     router.post("/", async (req, res) => {
       const touristSport = req.body;
       const result = await touristSports.insertOne(touristSport);

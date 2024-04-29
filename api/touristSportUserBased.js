@@ -7,10 +7,6 @@ const touristSportBasedOnUser = database.collection("userTouristSports");
 async function run() {
   try {
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!",
-    );
     router.get("/:userEmail", async (req, res) => {
       const userEmail = req.params.userEmail;
       const query = { email: userEmail };
